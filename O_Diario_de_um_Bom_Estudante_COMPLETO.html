@@ -1,243 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>O DIÁRIO DE UM BOM ESTUDANTE — Faculdade de Educação e Comunicação (UCM)</title>
-  <meta name="description" content="Portal O Diário de um Bom Estudante — Inquéritos, Modelos de Trabalhos e Diário Académico. Faculdade de Educação e Comunicação — UCM."/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Diário de um Bom Estudante</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#f5f8fb;
-      --nav:#063a6b;
-      --accent:#0ea5bf;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --maxw:1100px;
+    /* Reset e fontes */
+    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif;}
+    body {background:#f9f9f9; color:#333;}
+    a {text-decoration:none; color:white;}
+
+    /* Página inicial */
+    #welcome {
+      height:100vh;
+      background: url('https://via.placeholder.com/1920x1080') center/cover no-repeat;
+      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+      color:white;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:var(--bg);color:#0b1220}
-    .container{max-width:var(--maxw);margin:28px auto;padding:18px}
-    header{background:linear-gradient(90deg,var(--nav),#125e9a);color:#fff;padding:26px;border-radius:12px;display:flex;gap:18px;align-items:center;box-shadow:0 8px 30px rgba(2,6,23,0.08)}
-    .logo{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:800;color:#042f33}
-    header h1{margin:0;font-size:20px}
-    header p{margin:4px 0 0;font-size:13px;opacity:0.95}
-    nav{display:flex;gap:10px;align-items:center;margin-left:auto}
-    nav a{color:#e6f7fb;text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
-    nav a:hover{background:rgba(255,255,255,0.06)}
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
-    @media(max-width:920px){.hero{grid-template-columns:1fr}}
-    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(2,6,23,0.06);border:1px solid rgba(11,18,32,0.04)}
-    .lead{color:var(--muted);margin:8px 0 0}
-    .btn{display:inline-block;background:var(--accent);color:#042f33;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
-    .ghost{background:transparent;border:1px solid rgba(11,18,32,0.06);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted)}
-    .section-title{font-size:16px;margin:0 0 12px}
-    .profiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    @media(max-width:560px){.profiles{grid-template-columns:1fr}}
-    .profile{padding:12px;border-radius:8px;background:linear-gradient(180deg,rgba(14,165,191,0.03),rgba(96,165,250,0.02));border:1px solid rgba(11,18,32,0.03)}
-    .profile h4{margin:0 0 6px;font-size:14px}
-    .small{font-size:13px;color:var(--muted)}
-    /* Models grid */
-    .models{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
-    @media(max-width:980px){.models{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){.models{grid-template-columns:1fr}}
-    .model-card{background:#fff;padding:14px;border-radius:10px;border:1px solid rgba(11,18,32,0.04)}
-    .model-meta{font-size:12px;color:var(--muted);margin-top:6px}
-    .model-actions{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(6,182,212,0.08);color:#03656b;font-weight:600;font-size:13px}
-    /* diary */
-    .diary-list{display:grid;gap:12px}
-    .diary-item{padding:12px;border-radius:8px;border:1px solid rgba(11,18,32,0.04);background:#fff}
-    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;padding:14px}
-    .topbar{display:flex;gap:8px;align-items:center}
-    .search{display:flex;gap:8px}
-    input[type="search"]{padding:8px 10px;border-radius:8px;border:1px solid rgba(11,18,32,0.06);min-width:200px}
-    .tag{background:rgba(6,182,212,0.07);padding:6px 10px;border-radius:8px;color:#03656b;font-weight:600}
+    #welcome h1 {font-size:3rem; margin-bottom:1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
+    #welcome p {font-size:1.5rem; margin-bottom:2rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);}
+    #welcome .btn {background:#0056b3; padding:1rem 2rem; border-radius:10px; font-weight:600; transition:0.3s; cursor:pointer;}
+    #welcome .btn:hover {background:#003d80;}
+
+    /* Portal */
+    #portal {display:none; padding:2rem;}
+    nav {background:#0056b3; color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100;}
+    nav h2 {margin:0;}
+    nav ul {list-style:none; display:flex; gap:1rem;}
+    nav ul li {margin:0;}
+    nav ul li a {color:white; font-weight:600; transition:0.3s;}
+    nav ul li a:hover {color:#ffd700;}
+
+    section {margin:3rem 0;}
+    section h2 {text-align:center; margin-bottom:2rem; color:#0056b3;}
+
+    /* Cards de modelo */
+    .model-cards, .diario-cards, .noticias-cards {display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center;}
+    .model-card, .diario-card, .noticia-card {
+      background:white; padding:1.5rem; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); width:300px; text-align:center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .model-card:hover, .diario-card:hover, .noticia-card:hover {
+      transform: translateY(-5px); box-shadow:0 6px 14px rgba(0,0,0,0.15);
+    }
+    .model-card h4, .diario-card h4, .noticia-card h4 {margin-bottom:0.5rem; color:#0056b3;}
+    .model-card .model-meta, .diario-card .model-meta, .noticia-card .noticia-meta {font-size:0.9rem; margin-bottom:1rem; color:#555;}
+    .model-card .btn, .diario-card .btn, .noticia-card .btn {background:#0056b3; padding:0.5rem 1rem; border-radius:8px; font-weight:600; transition:0.3s;}
+    .model-card .btn:hover, .diario-card .btn:hover, .noticia-card .btn:hover {background:#003d80;}
+
+    footer {background:#003d80; color:white; text-align:center; padding:1rem 0; margin-top:3rem;}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">DB</div>
-      <div>
-        <h1>O DIÁRIO DE UM BOM ESTUDANTE</h1>
-        <p>Portal da Faculdade de Educação e Comunicação — Universidade Católica de Moçambique</p>
-      </div>
 
-      <nav aria-label="Main navigation">
-        <a href="#home">Início</a>
-        <a href="#inqueritos">Inquéritos</a>
-        <a href="#modelos">Modelos de Trabalhos</a>
-        <a href="#diario">Diário Académico</a>
-      </nav>
-    </header>
+  <!-- Página de Boas-Vindas -->
+  <div id="welcome">
+    <h1>Bem-vindo ao Diário de um Bom Estudante</h1>
+    <p>Um espaço para aprender, partilhar e crescer juntos na UCM.</p>
+    <button class="btn" id="enterPortal">Entrar no Portal</button>
+  </div>
 
-    <!-- HERO / Intro -->
-    <div class="hero" id="home" style="margin-top:18px">
-      <div class="card">
-        <h2 class="section-title">Bem-vindo ao Portal</h2>
-        <p class="small">Um espaço criado para inspirar, partilhar e elevar a qualidade académica da Faculdade de Educação e Comunicação (UCM). Encontre inquéritos, modelos de trabalhos aprovados e histórias que estimulam a excelência.</p>
+  <!-- Portal Principal -->
+  <div id="portal">
 
-        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn" id="open-form-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfcnB8405GgTc_B05gU0pv3o2MRfU2Jv950nfZBFPlVgtHsWg/viewform?usp=sharing&ouid=116839002042351830927" target="_blank">Responder Inquérito (5 min)</a>
-          <a class="ghost" href="#modelos">Ver Modelos de Trabalhos</a>
-        </div>
+    <!-- Navegação -->
+    <nav>
+      <h2>Diário do Estudante</h2>
+      <ul>
+        <li><a href="#inqueritos">Inquérito</a></li>
+        <li><a href="#modelos">Modelos</a></li>
+        <li><a href="#diario">Diário</a></li>
+        <li><a href="#noticias">Notícias</a></li>
+      </ul>
+    </nav>
 
-        <div style="margin-top:18px" class="small">
-          <strong>Nota:</strong> Todas as contribuições são tratadas de forma anónima (a não ser que o respondente opte por identificar-se) e os materiais partilhados seguem as normas de direitos académicos da UCM.
-        </div>
-      </div>
-
-      <aside class="card">
-        <h3 class="section-title">Destaques</h3>
-        <div class="profiles">
-          <div class="profile">
-            <h4>Inquérito ativo</h4>
-            <div class="small">“Avaliação do Bom Estudante” — opinião dos docentes</div>
-          </div>
-          <div class="profile">
-            <h4>Modelos</h4>
-            <div class="small">Trabalhos-modelo por curso (em breve mais uploads)</div>
-          </div>
-          <div class="profile">
-            <h4>Diário Académico</h4>
-            <div class="small">Histórias e boas práticas de alunos e docentes</div>
-          </div>
-          <div class="profile">
-            <h4>Contribua</h4>
-            <div class="small">Envie sugestões através do formulário de contacto no final do diário.</div>
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <!-- INQUERITOS -->
-    <section id="inqueritos" style="margin-top:20px">
-      <div class="card">
-        <h2 class="section-title">Inquéritos & Avaliações</h2>
-        <p class="small">Encontre aqui o(s) inquérito(s) direcionado(s) à comunidade docente. Clique no botão para responder.</p>
-        <div style="margin-top:12px">
-          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfcnB8405GgTc_B05gU0pv3o2MRfU2Jv950nfZBFPlVgtHsWg/viewform?usp=sharing&ouid=116839002042351830927" target="_blank">Responder Inquérito: Avaliação do Bom Estudante</a>
-        </div>
-        <div style="margin-top:12px" class="small">Duração estimada: 5–7 minutos. Obrigado pelo seu contributo.</div>
+    <!-- Seção Inquéritos -->
+    <section id="inqueritos">
+      <h2>Inquérito do Estudante</h2>
+      <div style="text-align:center;">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfcnB8405GgTc_B05gU0pv3o2MRfU2Jv950nfZBFPlVgtHsWg/viewform?usp=sharing" target="_blank">Responder Inquérito</a>
       </div>
     </section>
 
-    <!-- MODELOS -->
-    <section id="modelos" style="margin-top:18px">
-      <div class="card">
-        <h2 class="section-title">Modelos de Trabalhos — Biblioteca UCM</h2>
-        <p class="small">Trabalhos-modelo com boas classificações. Use como referência para melhorar a qualidade dos seus trabalhos. Disponibilizamos links para Google Drive (recomendado) e GitHub (backup público).</p>
-
-        <!-- search / filter -->
-        <div style="display:flex;gap:12px;align-items:center;margin-top:12px">
-          <div class="topbar">
-            <div class="search">
-              <input id="searchInput" type="search" placeholder="Procurar por título, curso ou disciplina"/>
-            </div>
-            <div style="margin-left:10px"><span class="tag">Ex.: Educação, Comunicação</span></div>
+    <!-- Seção Modelos -->
+    <section id="modelos">
+      <h2>Modelos de Trabalhos UCM</h2>
+      <div class="model-cards">
+        <div class="model-card">
+          <h4>Pasta de Trabalhos Modelo UCM</h4>
+          <div class="model-meta">Curso: Vários • Nota: —</div>
+          <div class="model-actions">
+            <a class="btn" href="https://drive.google.com/drive/folders/1v-zbrapVhYUvCfXRwng0DJRSNKvhHfxZ" target="_blank">Abrir no Drive</a>
           </div>
-        </div>
-
-        <div class="models" id="modelsGrid">
-          <!-- SAMPLE model 1 -->
-          <div class="model-card" data-title="Plano de Aula: Metodologias Activas" data-course="Educação">
-            <h4>Plano de Aula: Metodologias Activas</h4>
-            <div class="model-meta">Curso: Educação • Disciplina: Metodologias • Nota: 18/20</div>
-            <div class="model-actions">
-              <a class="btn" href="https://drive.google.com/drive/fake-link-example-1" target="_blank">Abrir no Drive</a>
-              <a class="ghost" href="https://github.com/esiotapua007/example-repo/blob/main/modelo1.pdf" target="_blank">Backup no GitHub</a>
-            </div>
-          </div>
-
-          <!-- SAMPLE model 2 -->
-          <div class="model-card" data-title="Relatório: Comunicação Comunitária" data-course="Comunicação">
-            <h4>Relatório: Comunicação Comunitária</h4>
-            <div class="model-meta">Curso: Comunicação • Disciplina: Assessoria • Nota: 19/20</div>
-            <div class="model-actions">
-              <a class="btn" href="https://drive.google.com/drive/fake-link-example-2" target="_blank">Abrir no Drive</a>
-              <a class="ghost" href="https://github.com/esiotapua007/example-repo/blob/main/modelo2.pdf" target="_blank">Backup no GitHub</a>
-            </div>
-          </div>
-
-          <!-- SAMPLE model 3 -->
-          <div class="model-card" data-title="Monografia: Educação Inclusiva" data-course="Educação">
-            <h4>Monografia: Educação Inclusiva</h4>
-            <div class="model-meta">Curso: Educação • Disciplina: Políticas Educativas • Nota: 18.5/20</div>
-            <div class="model-actions">
-              <a class="btn" href="https://drive.google.com/drive/fake-link-example-3" target="_blank">Abrir no Drive</a>
-              <a class="ghost" href="https://github.com/esiotapua007/example-repo/blob/main/modelo3.pdf" target="_blank">Backup no GitHub</a>
-            </div>
-          </div>
-
-          <!-- Additional placeholder for future uploads -->
-          <div class="model-card" data-title="(Em breve) Guia Prático de TCC" data-course="Comunicação">
-            <h4>(Em breve) Guia Prático de TCC</h4>
-            <div class="model-meta">Curso: Comunicação • Disciplina: Trabalho de Conclusão • Nota: —</div>
-            <div class="model-actions">
-              <span class="pill">Em preparação</span>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:12px" class="small">
-          <strong>Como contribuir:</strong> Docentes podem enviar ficheiros para o e-mail institucional (ou partilhar link do Drive) indicando curso, disciplina e nota. O administrador fará a validação antes da publicação.
         </div>
       </div>
     </section>
 
-    <!-- DIÁRIO -->
-    <section id="diario" style="margin-top:18px">
-      <div class="card">
-        <h2 class="section-title">Diário Académico</h2>
-        <p class="small">Textos curtos, entrevistas e boas práticas partilhadas por estudantes e docentes.</p>
-
-        <div class="diary-list" style="margin-top:12px">
-          <article class="diary-item">
-            <h4>História da Semana: Quando a participação vale mais que a nota</h4>
-            <p class="small">Por: Equipa do Portal • 04 Nov 2025</p>
-            <p>Resumo: Uma estudante que conciliou liderança em projeto comunitário e, apesar de notas médias, recebeu reconhecimento pelo impacto social do trabalho.</p>
-            <a class="ghost" href="#" style="margin-top:8px;display:inline-block">Ler mais</a>
-          </article>
-
-          <article class="diary-item">
-            <h4>Entrevista: Docente que inspira</h4>
-            <p class="small">Por: Gabinete Pedagógico • 28 Out 2025</p>
-            <p>Resumo: Conversa com um professor sobre metodologias activas e como orientar alunos a produzir trabalhos de qualidade.</p>
-            <a class="ghost" href="#" style="margin-top:8px;display:inline-block">Ler mais</a>
-          </article>
+    <!-- Seção Diário Académico -->
+    <section id="diario">
+      <h2>Diário Académico</h2>
+      <div class="diario-cards">
+        <div class="diario-card">
+          <h4>Reflexão de Estudo</h4>
+          <div class="diario-meta">Data: 10/11/2025</div>
+          <p>Espaço para registar progressos, aprendizados e experiências académicas.</p>
         </div>
-
-        <div style="margin-top:12px" class="small">
-          <strong>Submissões:</strong> Estudantes e docentes podem enviar textos para publicação. Envie para o e-mail institucional com assunto "Submissão — Diário Académico".
+        <div class="diario-card">
+          <h4>Participação em Atividades</h4>
+          <div class="diario-meta">Data: 09/11/2025</div>
+          <p>Notas sobre envolvimento em atividades extracurriculares e eventos da faculdade.</p>
         </div>
       </div>
     </section>
 
+    <!-- Seção Notícias -->
+    <section id="noticias">
+      <h2>Notícias e Destaques</h2>
+      <div class="noticias-cards">
+        <div class="noticia-card">
+          <h4>Workshop de Metodologias Ativas</h4>
+          <div class="noticia-meta">Publicado: 05/11/2025</div>
+          <p>Evento com participação de professores e estudantes, promovendo práticas inovadoras.</p>
+        </div>
+        <div class="noticia-card">
+          <h4>Entrega de Trabalhos Nota Máxima</h4>
+          <div class="noticia-meta">Publicado: 07/11/2025</div>
+          <p>Destaque para os melhores trabalhos entregues pelos estudantes este semestre.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
     <footer>
-      © 2025 Faculdade de Educação e Comunicação — Universidade Católica de Moçambique • Projeto: O Diário de um Bom Estudante
+      <p>© 2025 O Diário de um Bom Estudante - Faculdade de Educação e Comunicação, UCM</p>
+      <p>Ser estudante é aprender a cada passo.</p>
     </footer>
   </div>
 
+  <!-- Script para transição página inicial → portal -->
   <script>
-    // Simple client-side search for model cards
-    (function(){
-      const input = document.getElementById('searchInput');
-      const grid = document.getElementById('modelsGrid');
-      if(!input || !grid) return;
-      input.addEventListener('input', function(){
-        const q = (this.value || '').toLowerCase().trim();
-        const cards = grid.querySelectorAll('.model-card');
-        cards.forEach(c=>{
-          const title = c.getAttribute('data-title').toLowerCase();
-          const course = c.getAttribute('data-course').toLowerCase();
-          if(!q || title.includes(q) || course.includes(q)){
-            c.style.display = '';
-          } else {
-            c.style.display = 'none';
-          }
-        });
-      });
-    })();
+    const enterBtn = document.getElementById('enterPortal');
+    const welcome = document.getElementById('welcome');
+    const portal = document.getElementById('portal');
+
+    enterBtn.addEventListener('click', () => {
+      welcome.style.display = 'none';
+      portal.style.display = 'block';
+      window.scrollTo(0,0);
+    });
   </script>
+
 </body>
 </html>
